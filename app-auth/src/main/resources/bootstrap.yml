@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: app-auth
+  cloud:
+    config:
+      uri: http://localhost:8800
+      fail-fast: false
+  profiles:
+    active: dev

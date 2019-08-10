@@ -1,0 +1,40 @@
+@charset "utf-8";
+/*author yinq*/
+/*body - 设置字体颜色*/
+body{ color:#777;  background:#097acd url("images/login.png") center center no-repeat;}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body,button,input,select,textarea{font:14px/1.5 "Microsoft YaHei",tahoma,arial,\5b8b\4f53;}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {margin:0;padding:0;}
+
+/*logo*/
+.logo{ text-align:center; margin-top:30px;}
+
+/*loginbox*/
+.loginbox{ width:420px; margin:10% auto 0;} /* box-shadow:0px 0px 6px #2651AA;}*/
+.loginbox .inputbox{ padding:20px 30px 0;}
+.loginbox .inputbox label{ display:block;}
+.inbox{ /*background-color:#F2F2F2;*/
+    background: url("images/login_center.png") bottom center no-repeat;
+    padding-bottom:30px; -moz-border-radius-bottomleft:3px; -moz-border-radius-bottomright:3px; -webkit-border-bottom-left-radius:3px; -webkit-border-bottom-right-radius:3px; border-bottom-left-radius:3px; border-bottom-right-radius:3px;}
+.login_top{
+    background: url("images/login_top.png") top center no-repeat;
+    font-size:18px; color:#fff; padding: 12px 30px; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;
+    -webkit-border-top-left-radius:3px; -webkit-border-top-right-radius:3px; border-top-left-radius:3px; border-top-right-radius:3px;
+    /*background-color:#4A7ED4;*/
+}
+
+/*admintext - 输入框*/
+.admintext{ border:1px solid #DCDDDF; width:338px; padding: 10px; outline:none; color:#777; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;}
+.admintext:focus{ border-color:#73A5EA;}
+/*admintext - 登录按钮*/
+.loginbut{ display:block; width:100%; height:38px; border:none; color:#FFF; font-size:16px; cursor:pointer; line-height:38px; text-align:center; background-color:#2F97E1; outline:none; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;}
+.loginbut:hover{ background-color:#2685DA;}
+
+.errormes{padding:20px 30px 0; color: #f56c6c; }
+
+
+/*copyright*/
+.copyright{ text-align:center; margin-top:20px; color:#FFF;}
+.copyright a{ color:#FFF;}

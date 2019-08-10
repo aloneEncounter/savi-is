@@ -1,0 +1,42 @@
+server:
+  port: 8801
+  servlet:
+    session:
+      cookie:
+        name: UISESSIONMEMBER
+
+security:
+  oauth2:
+    client:
+      client-id: saviApp
+      client-secret: savi_Secret
+      access-token-uri: http://localhost:8082/oauth/token
+      user-authorization-uri: http://localhost:8082/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8082/auth/user
+
+spring:
+  application:
+    name: service-admin
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 15s
+        prefer-ip-address: true #使用IP地址进行注册
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health
+  boot:
+    admin:
+      discovery:
+        ignored-services: consul
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

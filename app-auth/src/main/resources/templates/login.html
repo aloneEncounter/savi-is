@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>赛维航电企业管理信息系统</title>
+    <!--<link rel="shortcut icon" href="favicon.png">-->
+    <!--<link rel="icon" href="favicon.png" type="image/x-icon">-->
+    <link type="text/css" rel="stylesheet" th:href="@{css/login.css}" />
+    <script type="text/javascript">
+        if(top.location!=self.location){
+            top.location = "/";
+        }
+    </script>
+</head>
+<body>
+<div style="min-height: 100%;height: auto;">
+<form th:action="@{/login}" commandName="user" method="post" class="loginbox">
+    <h5 class="login_top" th:text="${sysName}"></h5>
+    <input type="hidden" name="returnUrl" th:value="${returnUrl}"/>
+    <div class="inbox">
+        <div class="inputbox">
+            <label>用户名</label>
+            <input id="name" type="text" class="admintext" name="username" placeholder="填写您的后台账号" value="admin"  />
+
+        </div>
+        <div class="inputbox">
+            <label>密码</label>
+            <input type="password" class="admintext" name="password" placeholder="您的密码" value="password" />
+        </div>
+
+        <div class="errormes" th:if="${param.error}">
+            <label th:text="${Session.SPRING_SECURITY_LAST_EXCEPTION.message}"></label>
+        </div>
+        <div class="inputbox"><button type="submit" class="loginbut">登 录</button></div>
+    </div>
+</form>
+<div class="copyright">&copy; <a href="http://www.savi.com.cn" target="_blank">SAVI</a>  2018</div>
+</div>
+<script language="javascript">
+    document.getElementById('name').focus();
+</script>
+</body>
+</html>

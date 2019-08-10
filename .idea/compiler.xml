@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="app-auth" />
+        <module name="app-sys" />
+        <module name="lib-base" />
+        <module name="service-admin" />
+        <module name="service-config" />
+        <module name="service-zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="app-auth" target="1.8" />
+      <module name="app-sys" target="1.8" />
+      <module name="lib-base" target="1.8" />
+      <module name="savi-is" target="1.8" />
+      <module name="service-admin" target="1.8" />
+      <module name="service-config" target="1.8" />
+      <module name="service-zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

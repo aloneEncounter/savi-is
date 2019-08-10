@@ -1,0 +1,9 @@
+1. 安装node  https://nodejs.org/zh-cn/
+2. 安装grun
+    npm install -g grunt-cli
+3. 进入项目
+4.  npm install grunt -save-dev
+
+5. 编写package.json，Gruntfile.js
+
+6. 运行grunt

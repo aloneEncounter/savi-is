@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.savi.appauth.dao.BaseUserDao">
+    <resultMap type="com.savi.appauth.entity.BaseUser" id="baseUserMap">
+        <result column="USER_CODE" property="userCode" />
+        <result column="USER_NAME" property="userName" />
+        <result column="PASS" property="pass" />
+        <result column="LAST_PASS_CHANGED_DATE" property="lastPassChangedDate" />
+        <result column="LAST_LOCKOUT_DATE" property="lastLockoutDate" />
+        <result column="FAILED_PASS_COUNT" property="failedPassCount" />
+        <result column="LOCKED_OUT" property="lockedOut" />
+        <result column="ENABLED" property="suEnabled" />
+        <result column="SUS_PASS_CHANGE_CYCLE" property="susPassChangeCycle" />
+        <result column="SUS_PASS_MIN_LEN" property="susPassMinLen" />
+        <result column="SUS_PASS_COMPLEXITY" property="susPassComplexity" />
+    </resultMap>
+
+    <!-- 获取对象 -->
+    <select id="queryUser" resultMap="baseUserMap">
+    SELECT USER_NAME, su.USER_CODE, PASS, LAST_PASS_CHANGED_DATE, LAST_LOCKOUT_DATE, FAILED_PASS_COUNT, LOCKED_OUT, ENABLED,
+        SUS_PASS_CHANGE_CYCLE, SUS_PASS_COMPLEXITY, SUS_PASS_MIN_LEN
+    FROM sys_user su
+        JOIN SYS_USER_SORT sus on su.SUS_CODE=sus.SUS_CODE
+    WHERE SU.USER_CODE = #{userName}
+    </select>
+    
+
+
+
+</mapper>

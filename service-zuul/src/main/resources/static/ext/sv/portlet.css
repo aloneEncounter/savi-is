@@ -1,0 +1,38 @@
+.x-panel-ghost {
+    z-index: 1;
+}
+.x-border-layout-ct {
+    background: #DFE8F6;
+}
+.x-portal-body {
+    padding: 0 0 0 8px;
+}
+.x-portal .x-portal-column {
+    /* columns must have vertical padding to avoid losing dimensions when empty */
+    padding: 8px 8px 0 0;
+}
+.x-portal .x-panel-dd-spacer {
+    border: 2px dashed #99bbe8;
+    background: #f6f6f6;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-bottom: 10px;
+}
+.x-portlet {
+    margin-bottom:10px;
+    padding: 1px;
+}
+.x-portlet .x-panel-body {
+    background: #fff;
+}
+.x-accordion-item .x-accordion-hd {
+    border-top-color: #f3f7fb;
+}
+
+/** 工作流样式 */
+.icon-disk_submit{background-image:url('[[@{/ext/ico/disk_submit.png}]]') !important;}
+.icon-disk{background-image:url('[[@{/ext/ico/disk.png}]]') !important;}
+.icon-cross{background-image:url('[[@{/ext/ico/cross.png}]]') !important;}
+.icon-bullet_go{background-image:url('[[@{/ext/ico/bullet_go.png}]]') !important;}
+.icon-zoom{background-image:url('[[@{/ext/ico/zoom.png}]]') !important;}
+.x-form-readonly input { background-color: #f0f0f0; }

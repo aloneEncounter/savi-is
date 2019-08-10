@@ -1,0 +1,75 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /auth
+    session:
+      cookie:
+        name: sv-session
+
+spring:
+  application:
+    name: app-auth
+  thymeleaf:
+    cache: false
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 15s
+        prefer-ip-address: true #使用IP地址进行注册
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}${server.servlet.context-path}/actuator/health
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: savi-is
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.192.0.10:3306/savi-sys?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+#    username: savi_si
+#    password: 123456
+    url: jdbc:mysql://localhost:3306/savi-sys?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: miao123
+
+  druid:
+    initial-size: 5 #初始化连接大小
+    min-idle: 5     #最小连接池数量
+    max-active: 50  #最大连接池数量
+    max-wait: 60000 #获取连接时最大等待时间，单位毫秒
+    time-between-eviction-runs-millis: 60000    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    min-evictable-idle-time-millis: 300000      #配置一个连接在池中最小生存的时间，单位是毫秒
+    validation-query: SELECT 1 FROM DUAL        #测试连接
+    test-while-idle: true                       #申请连接的时候检测，建议配置true，不影响性能，并且保证安全
+    test-on-borrow: false                       #获取连接时执行检测
+    test-on-return: false                       #归还连接时执行检测
+    pool-prepared-statements: false             #是否开启PSCache，对支持游标数据库性能提升巨大，oracle建议开启，mysql建议关闭
+    max-pool-prepared-statement-per-connection-size: 20  #开启pool-prepared-statements后生效
+    filters: stat,wall,log4j  #配置扩展插件，常用插件有  stat:监控统计; log4j: 日志; wall: 防御SQL注入
+
+
+
+mybatis:
+  #type-aliases-package:
+  configuration:
+    map-underscore-to-camel-case: true   #开启驼峰命名， l_name lName
+    jdbc-type-for-null: null
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+    cache-enabled: true  #开机二级缓存
+    call-setters-on-nulls: true #map空列不显示问题
+  mapper-locations:
+    - classpath:mappings/**/**.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+

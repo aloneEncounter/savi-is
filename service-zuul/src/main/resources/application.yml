@@ -1,0 +1,55 @@
+server:
+  port: 8080
+#  servlet:
+#    session:
+#      cookie:
+#        name: sv-session
+
+spring:
+  application:
+    name: service-zuul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 15s
+        prefer-ip-address: true #使用IP地址进行注册
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health/
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: savi-is
+
+
+zuul:
+  include-debug-header: true
+  add-host-header: true
+  sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
+  routes:
+    app-auth:
+      path: /auth/**
+      serviceId: app-auth
+      strip-prefix: false
+    app-sys :
+      path: /sys/**
+      serviceId: app-sys
+      strip-prefix: false
+
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
